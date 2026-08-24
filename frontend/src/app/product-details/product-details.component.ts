@@ -103,4 +103,12 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   isLoggedIn () {
     return localStorage.getItem('token')
   }
+
+  getAvifSrcSet (image: string): string {
+    if (!image) return ''
+    const baseName = image.substring(0, image.lastIndexOf('.'))
+    return [1, 2, 3]
+      .map(size => `assets/public/images/products/${baseName}-${size}x.avif ${size}x`)
+      .join(', ')
+  }
 }
